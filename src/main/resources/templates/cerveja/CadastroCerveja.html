@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Baltika - Cadastro de Cervejas</title>
-</head>
-<body>
-	Olá, mundo!
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="htp://www.thymeleaf.org"/>
+	<head>
+		<meta charset="UTF-8">
+		<title>Baltika - Cadastro de Cervejas</title>
+	</head>
+	<body>
+		<form method="POST">
+			<span th:text="${mensagem}"></span><br>
+			
+			<label for="sku">SKU</label>
+			<input type="text" id="sku" name="sku"/><br>
+			
+			<label for="nome">Nome</label>
+			<input type="text" id="nome" name="nome"/><br>
+			
+			<label for="sku">Descrição</label>
+			<input type="text" id="descricao" name="descricao"/><br>
+			
+			<input type="submit" value="Salvar"/>
+		</form>
+	</body>
 </html>
