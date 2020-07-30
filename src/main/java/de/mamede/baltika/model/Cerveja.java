@@ -6,12 +6,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Cerveja {
 	
-	@NotEmpty
+	@NotEmpty(message = "O SKU deve ser preenchido.")
 	private String sku;
-	@NotEmpty
+	@NotEmpty(message = "O nome deve ser preenchido.")
 	private String nome;
-	@NotEmpty
-	@Size(max=50)
+	@NotEmpty(message = "A descrição deve ser preenchida.")
+	@Size(max=100, message = "A descrição deve ter 200 caracteres no máximo.")
 	private String descricao;
 	
 	//******************************************

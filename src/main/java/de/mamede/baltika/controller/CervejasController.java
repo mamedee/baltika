@@ -14,17 +14,16 @@ import de.mamede.baltika.model.Cerveja;
 @Controller
 public class CervejasController {
 	
-	@RequestMapping("/cervejas/novo")
-	public String novo() {
+	@RequestMapping( "/cervejas/novo" )
+	public String novo( Cerveja cerveja ) {
 		return "cerveja/CadastroCerveja";
 	}
 	
-	@RequestMapping(value="/cervejas/novo", method = RequestMethod.POST)
-	private String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
+	@RequestMapping( value = "/cervejas/novo", method = RequestMethod.POST )
+	private String cadastrar( @Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes ) {
 		
-		if (result.hasErrors()) {
-			model.addAttribute("mensagem", "Erro no formulário");
-			return "cerveja/CadastroCerveja";
+		if ( result.hasErrors() ) {
+			return novo( cerveja );
 		}
 		
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso");
