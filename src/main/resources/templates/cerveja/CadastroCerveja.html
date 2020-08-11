@@ -17,13 +17,14 @@
 			</div>
 			
 			<div class="container-fluid">
-			
+				<!--
 				<div class="alert alert-danger alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<i class="fa fa-exclamation-circle"></i> Já existe um produto com o nome informado.
+					  <i class="fa fa-exclamation-circle"></i> Já existe um produto com o nome informado.
 				</div>
+				-->
 			
 				<form method= "POST" th:object = "${cerveja}" class="form-vertical js-form-loading">
 					
@@ -45,9 +46,16 @@
 					<div class="row">
 						<div class="col-sm-3 form-group">
 							<label for="estilo">Estilo</label>
-							<select id="estilo" class="form-control">
-								<option value="">Selecione o estilo</option>
-							</select>
+							<div class="field-action">
+								<select id="estilo" class="form-control">
+									<option value="">Selecione o estilo</option>
+								</select>
+								<div class="field-action_icon">
+									<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstilo">
+										<i class="glyphicon glyphicon-plus-sign glyphicon-large"></i>
+									</a>
+								</div>
+							</div>
 						</div>
 						
 						<div class="col-sm-3 form-group">
@@ -115,24 +123,7 @@
 				</form>
 			</div>
 			
-			<script>
-			function excluir() {
-				swal({
-					title: "Tem certeza?",
-					text: "Você não poderá recuperar o produto após a exclusão.",
-					type: "warning",
-					showCancelButton: true,
-					confirmButtonColor: "#DD6B55",
-					confirmButtonText: "Sim, exclua agora!",
-					closeOnConfirm: false,
-					showLoaderOnConfirm: true
-				}, function() {
-					setTimeout(function() {
-						swal("Excluído!", "O produto foi excluído com sucesso.", "success");
-					}, 2000);
-				});
-			}
-			</script>
+			<div th:replace="estilo/CadastroRapidoEstilo :: modal"></div>
 		
 		</section>
 							

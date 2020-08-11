@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/layout/assets/stylesheets/vendors.min.css}"/>
 		<link rel="stylesheet" type="text/css" th:href="@{/layout/assets/stylesheets/baltika.min.css}"/>
 		<link rel="stylesheet" type="text/css" th:href="@{/layout/assets/stylesheets/application.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/baltika.css}"/>
 	</head>
 	
 	<body>
@@ -25,7 +26,7 @@
 			
 			<section layout:fragment="content"></section>
 			
-			<div th:replace="layout/fragment/Rodape :: layout-footer"></div>
+			<div th:replace="layout/fragments/Rodape :: layout-footer"></div>
 		</div>
 		
 	</body>

@@ -1,0 +1,17 @@
+/* UTILIDADES */
+
+.glyphicon-large {
+	font-size: 18px;
+}
+
+/* COMPONENTES */
+
+/* FIELD ACTION*/
+
+.field-action {
+	display: flex;
+}
+
+.field-action_icon {
+	margin: 5px 0 0 5px;
+}
