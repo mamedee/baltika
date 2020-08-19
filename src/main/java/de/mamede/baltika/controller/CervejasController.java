@@ -10,24 +10,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.mamede.baltika.model.Cerveja;
+import de.mamede.baltika.model.Cliente;
 
 @Controller
 public class CervejasController {
 	
-	@RequestMapping( "/cervejas/novo" )
-	public String novo( Cerveja cerveja ) {
+	@RequestMapping( "/cervejas/novaCerveja" )
+	public String novaCerveja( Cerveja cerveja ) {
 		return "cerveja/CadastroCerveja";
 	}
 	
-	@RequestMapping( value = "/cervejas/novo", method = RequestMethod.POST )
-	private String cadastrar( @Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes ) {
+	@RequestMapping("/clientes/novoCliente")
+	public String novoCliente(Cliente cliente) {
+		return "cliente/CadastroCliente";
+	}
+	
+	@RequestMapping( value = "/cervejas/novaCerveja", method = RequestMethod.POST )
+	private String cadastrarCerveja( @Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes ) {
 		
 		if ( result.hasErrors() ) {
-			return novo( cerveja );
+			return novaCerveja( cerveja );
 		}
 		
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso");
-		return "redirect:/cervejas/novo";
-	} 
+		return "redirect:/cervejas/novaCerveja";
+	}
+	
+	@RequestMapping( value = "/clientes/novoCliente", method = RequestMethod.POST) 
+	private String cadastrarCliente(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes attributes ) {
+		
+		if ( result.hasErrors() ) {
+			return novoCliente ( cliente );
+		}
+		
+		attributes.addFlashAttribute("mensagem", "Cliente cadastrado com sucesso");
+		return "redirect:/clientes/novoCliente";
+	}
 	
 }
