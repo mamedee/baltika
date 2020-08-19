@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.mamede.baltika.model.Cerveja;
 import de.mamede.baltika.model.Cliente;
+import de.mamede.baltika.model.Usuario;
 
 @Controller
 public class CervejasController {
@@ -23,6 +24,11 @@ public class CervejasController {
 	@RequestMapping("/clientes/novoCliente")
 	public String novoCliente(Cliente cliente) {
 		return "cliente/CadastroCliente";
+	}
+	
+	@RequestMapping("/usuarios/novoUsuario")
+	public String novoUsuario(Usuario usuario) {
+		return "usuario/CadastroUsuario";
 	}
 	
 	@RequestMapping( value = "/cervejas/novaCerveja", method = RequestMethod.POST )
@@ -45,6 +51,17 @@ public class CervejasController {
 		
 		attributes.addFlashAttribute("mensagem", "Cliente cadastrado com sucesso");
 		return "redirect:/clientes/novoCliente";
+	}
+	
+	@RequestMapping( value = "/usuarios/novoUsuario", method = RequestMethod.POST) 
+	private String cadastrarUsuario(@Valid Usuario usuario, BindingResult result, Model model, RedirectAttributes attributes ) {
+		
+		if ( result.hasErrors() ) {
+			return novoUsuario ( usuario );
+		}
+		
+		attributes.addFlashAttribute("mensagem", "Usuário cadastrado com sucesso");
+		return "redirect:/usuarios/novoUsuario";
 	}
 	
 }
